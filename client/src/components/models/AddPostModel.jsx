@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdImages } from "react-icons/io";
-import React from "react";
+import React, { useRef, useState } from "react";
 
 const AddPostModel = () => {
   const _300 = useMediaQuery("(min-width:300px)");
@@ -19,7 +19,16 @@ const AddPostModel = () => {
   const _500 = useMediaQuery("(min-width:500px)");
   const _650 = useMediaQuery("(min-width:650px)");
 
+  const [text, setText] = useState();
+  const [media, setMedia] = useState();
+
+  const mediaRef = useRef();
+
   const handleModelClose = () => {};
+  const handleMediaRef = () => {
+    mediaRef.current.click();
+  };
+  const handlePost = () => {};
 
   return (
     <>
@@ -34,7 +43,7 @@ const AddPostModel = () => {
           top={20}
           right={20}
           onclick={handleModelClose}
-          sx={{cursor:"pointer"}}
+          sx={{ cursor: "pointer" }}
         >
           <RxCross2 size={28} />
         </Box>
@@ -44,8 +53,8 @@ const AddPostModel = () => {
         <DialogContent>
           <Stack flexDirection={"row"} gap={2} mb={5}>
             <Avatar src="" alt="" />
-            <Stack width={"90%"} >
-              <Typography variant="h6" fontWeight={"bold"} fontSize={"1rem"} >
+            <Stack width={"90%"}>
+              <Typography variant="h6" fontWeight={"bold"} fontSize={"1rem"}>
                 Shreyash_01
               </Typography>
               <textarea
@@ -54,18 +63,31 @@ const AddPostModel = () => {
                 className="  border-none outline-none py-[5px] px-[10px] relative left-[-10px] text-gray-600 mb-[20px]"
                 placeholder="Start a Post..."
                 autoFocus
-              
+                onChange={(e) => setText(e.target.value)}
               />
-            
-              <img
-                src=""
-                alt=""
-                id="url-img"
-                width={_500 ? 300 : _300 ? 200 : 100}
-                height={_500 ? 300 : _300 ? 200 : 100}
+
+              {media ? (
+                <img
+                  src={URL.createObjectURL(media)}
+                  alt=""
+                  id="url-img"
+                  width={_500 ? 300 : _300 ? 200 : 100}
+                  height={_500 ? 300 : _300 ? 200 : 100}
+                />
+              ) : null}
+
+              <IoMdImages
+                size={28}
+                onClick={handleMediaRef}
+                sx={{ cursor: "pointer" }}
               />
-              <IoMdImages size={28} />
-              <input type="file" accept="images/*" className="none" />
+              <input
+                type="file"
+                accept="images/*"
+                className="file-input"
+                ref={mediaRef}
+                onChange={(e) => setMedia(e.target.files[0])}
+              />
             </Stack>
           </Stack>
           <Stack
@@ -84,6 +106,7 @@ const AddPostModel = () => {
                 borderRadius: "10px",
                 ":hover": { bgcolor: "gray", cursor: "pointer" },
               }}
+              onclick={handlePost}
             >
               Post
             </Button>

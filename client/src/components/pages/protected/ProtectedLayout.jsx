@@ -5,6 +5,8 @@ import { Outlet } from "react-router-dom";
 //  Import Components
 import Header from "../../common/Header";
 import AddPostModel from "../../models/AddPostModel";
+import EditProfile from "../../models/EditProfile";
+import MainMenu from "../../menu/MainMenu";
 
 const ProtectedLayout = () => {
   const _300 = useMediaQuery("(min-width:300px)");
@@ -22,6 +24,9 @@ const ProtectedLayout = () => {
       >
         <Header />
         {/* <AddPostModel />   */}
+        {/* <EditProfile /> */}
+        {/* <MainMenu /> */}
+
         <Outlet />
       </Stack>
     </>

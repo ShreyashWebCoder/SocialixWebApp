@@ -8,6 +8,13 @@
   box-sizing: border-box;
 }
 
+.file-input {
+  display: none;
+}
+
+#url-img{
+  margin: 0 0 10px;
+}
 /* Dark Mode */
 /* #root {
   color: white;

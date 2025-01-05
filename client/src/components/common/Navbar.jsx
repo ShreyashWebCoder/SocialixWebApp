@@ -8,7 +8,6 @@ import { IoSearchSharp } from "react-icons/io5";
 import { FaEdit, FaArrowLeft } from "react-icons/fa";
 import { IoHeart } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const _300 = useMediaQuery("(min-width:300px)");

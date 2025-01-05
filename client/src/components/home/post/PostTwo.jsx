@@ -22,7 +22,7 @@ const PostTwo = () => {
             >
               Shreyash Wadhai
             </Typography>
-            <Link to={"/post/2"}>
+            <Link to={"/post/2"} className="link">
               <Typography
                 variant="h5"
                 fontSize={
