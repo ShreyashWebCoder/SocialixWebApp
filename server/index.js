@@ -11,8 +11,11 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the user API");
+})
 app.use('/api', router);
-
+    
 
 
 const PORT = process.env.PORT || 3000;
